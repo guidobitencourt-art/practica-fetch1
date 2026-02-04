@@ -7,13 +7,16 @@
 
 async function searchPost(id) {
     try {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-        if (!response.ok) {
-            throw new Error('Post not found');
-        }
+        const url = `https://jsonplaceholder.typicode.com/posts/${id}`;
+        const response = await fetch(url);
+
+        // if (!response.ok) {
+        //     throw new Error('Post not found');
+        // }
         const post = await response.json();
-        console.log(post.title.toUpperCase());
+        console.log(`POST ENCONTRAD: ${post.title.toUpperCase()}`);
     } catch (error) {
         console.log("El post no pudo ser hallado");
     }
 }   
+searchPost(1); // Prueba con un ID válido
